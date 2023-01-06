@@ -1,7 +1,7 @@
 class DataPinker extends HTMLElement {
   constructor() {
     super();
-    
+
     let qwe = new Date();
     this.year = qwe.getFullYear();
     this.month = qwe.getMonth();
@@ -25,8 +25,8 @@ class DataPinker extends HTMLElement {
     let div = document.createElement("div");
     div.append(tmpl.content.cloneNode(true));
     shadow.append(div);
-    document.onclick = function(event) {
-      if(event.target.nodeName != "DATE-PINKER") {
+    document.onclick = function (event) {
+      if (event.target.nodeName != "DATE-PINKER") {
         date_form.style.display = "none";
       }
     };
@@ -62,13 +62,13 @@ class DataPinker extends HTMLElement {
     function createTable() {
       mth_form.innerHTML = `${month[dt.getMonth()]}, ${dt.getFullYear()}`;
       tbl_bd.innerHTML = `<tr>
-      <td style="color: #C0C0C0; font-weight = 900">S</td>
-      <td style="color: #C0C0C0; font-weight = 900">M</td>
-      <td style="color: #C0C0C0; font-weight = 900">T</td>
-      <td style="color: #C0C0C0; font-weight = 900">W</td>
-      <td style="color: #C0C0C0; font-weight = 900">T</td>
-      <td style="color: #C0C0C0; font-weight = 900">F</td>
-      <td style="color: #C0C0C0; font-weight = 900">S</td>
+      <td style="color: #C0C0C0; font-weight: 900">S</td>
+      <td style="color: #C0C0C0; font-weight: 900">M</td>
+      <td style="color: #C0C0C0; font-weight: 900">T</td>
+      <td style="color: #C0C0C0; font-weight: 900">W</td>
+      <td style="color: #C0C0C0; font-weight: 900">T</td>
+      <td style="color: #C0C0C0; font-weight: 900">F</td>
+      <td style="color: #C0C0C0; font-weight: 900">S</td>
       </tr>`;
       let tr = document.createElement("tr");
       for (let i = 1; i <= 31; i++) {
@@ -80,14 +80,14 @@ class DataPinker extends HTMLElement {
         }
         let day = dt.getDay();
         let td = document.createElement("td");
-        td.classList.add('td');
+        td.classList.add("td");
 
         if (i == 1)
           for (let j = 0; j < day; j++) {
             let td_sc = document.createElement("td");
             tr.appendChild(td_sc);
           }
-        
+
         td.onclick = function (event) {
           let target = event.target;
           prevday.style.backgroundColor = "";
@@ -100,7 +100,12 @@ class DataPinker extends HTMLElement {
           show_dmy.innerHTML = format(date, moth, year);
           target.style.backgroundColor = "#68DE56";
           target.style.color = "#FFFFFF";
-          wmd_m.innerHTML = weeks[dt.getDay()] + ", " + month[dt.getMonth()].match(/\w\w\w/i) +  " " + dt.getDate();
+          wmd_m.innerHTML =
+            weeks[dt.getDay()] +
+            ", " +
+            month[dt.getMonth()].match(/\w\w\w/i) +
+            " " +
+            dt.getDate();
           prevday = target;
         };
         if (date == i && moth == dt.getMonth() && year == dt.getFullYear()) {
@@ -133,18 +138,21 @@ class DataPinker extends HTMLElement {
       "November",
       "December",
     ];
-    let weeks = [
-      'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'
-    ];
+    let weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-    wmd_m.innerHTML = weeks[dt.getDay()] + ", " + month[dt.getMonth()].match(/\w\w\w/i) +  " " + dt.getDate();
+    wmd_m.innerHTML =
+      weeks[dt.getDay()] +
+      ", " +
+      month[dt.getMonth()].match(/\w\w\w/i) +
+      " " +
+      dt.getDate();
 
-    wmd_m.onmouseover = function(event) {
+    wmd_m.onmouseover = function (event) {
       event.target.style.fontWeight = "bold";
-    }
-    wmd_m.onmouseout = function(event) {
+    };
+    wmd_m.onmouseout = function (event) {
       event.target.style.fontWeight = "500";
-    }
+    };
 
     function changeMounth(plus) {
       dt.setDate(1);
@@ -185,8 +193,9 @@ class DataPinker extends HTMLElement {
 
         let td = document.createElement("td");
         td.innerHTML = month[i].match(/\b\w\w\w/);
-        td.classList.add('tdy');
-
+        td.classList.add("tdy");
+        td.style.border = "1.2px solid #FFFFFF";
+        td.style.borderRadius = "3px";
         td.onclick = function () {
           dt.setDate(1);
           dt.setMonth(i);
@@ -201,7 +210,7 @@ class DataPinker extends HTMLElement {
           event.target.style.borderRadius = "3px";
         };
         td.onmouseout = function (event) {
-          event.target.style.border = "";
+          event.target.style.border = "1.2px solid #FFFFFF";
         };
 
         tr.appendChild(td);
@@ -288,7 +297,12 @@ class DataPinker extends HTMLElement {
           dt.setDate(1);
           dt.setMonth(moth);
           dt.setDate(date);
-          wmd_m.innerHTML = weeks[dt.getDay()] + ", " + month[dt.getMonth()].match(/\w\w\w/i) +  " " + dt.getDate();
+          wmd_m.innerHTML =
+            weeks[dt.getDay()] +
+            ", " +
+            month[dt.getMonth()].match(/\w\w\w/i) +
+            " " +
+            dt.getDate();
           span.style.color = "#0024FF";
           prevyear = span;
         };
