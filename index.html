@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DatePicker</title>
+    <style>
+      td {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      skdfoffffffffffffffffffffffffffffffffffffffffffffff
+    </div>
+    <template id="tmpl">
+      <link rel="stylesheet" href="./gallery.css" />
+      <div>
+        <div id="main_form">
+          <span id="show_dmy"></span>
+          <div id="can" style="text-align: center; color: #2287ff">
+            <span>&#x25BC;</span>
+          </div>
+        </div>
+        <div id="date_form" class="shadow">
+          <div id="cms">
+            <div id="info_form">
+              <div id="year_m" style = "cursor: pointer;"></div>
+              <div id="wmd_m" style = "cursor: pointer;"></div>
+            </div>
+            <div id="mth_coll" class="formatmonyear">
+              <span id="prev" class="mouvement">&#10094;</span>
+              <div id="mth_form" class="yearmonth" align="center"></div>
+              <span id="nxt" class="mouvement">&#10095;</span>
+            </div>
+            <div id="show_date">
+              <table>
+                <tbody align="center"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <date-pinker format = "m.d.y"></date-pinker>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

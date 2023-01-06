@@ -1,0 +1,84 @@
+.mouvement {
+  width: 25px;
+  height: 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.yearmonth {
+  cursor: pointer;
+  width: 160px;
+  font-weight: 900;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.formatmonyear {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+}
+.shadow {
+  box-shadow: 1px 1px 8px rgb(82, 82, 82);
+  width: 238px;
+  position: absolute;
+}
+span {
+  cursor: pointer;
+}
+.green {
+  background-color: #68DE56;
+}
+#year_m {
+  color: #FFFFFF;
+  padding: 8px;
+}
+#main_form {
+  height: 20px;
+  width: 120px;
+  border: 1.4px solid #2287FF;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+#info_form {
+  width: 238px;
+  height: 65px;
+  background-color: #2287FF;
+}
+
+#show_dmy {
+  padding: 1.5px;
+}
+
+table {
+  border-spacing: 7px;
+  padding: 4px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+#wmd_m {
+  padding-left: 8px;
+  padding-bottom: 4px;
+  color: #FFFFFF;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.td {
+  cursor: pointer;
+  border-radius: 25px;
+  font-weight: 800;
+  width: 25px;
+  height: 25px;
+}
+.tdy {
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 700;
+  width: 66px;
+  height: 30px;
+}
