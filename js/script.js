@@ -8,7 +8,7 @@ class DataPinker extends HTMLElement {
     this.day = qwe.getDate();
   }
 
-  connectedCallback() {
+  build() {
     function format(d, m, y, k = ".", p = ".") {
       let s = "";
       if (d < 10) s += "0" + d;
@@ -30,9 +30,21 @@ class DataPinker extends HTMLElement {
         date_form.style.display = "none";
       }
     };
+
+    
     let dt = new Date();
     let date = this.day;
-    let form = this.format1;
+    let form = this.getAttribute("format") || "";
+    let time = setInterval(() => {
+      form = this.getAttribute("format") || "";
+      show_dmy.innerHTML = format(
+        this.day,
+        this.month,
+        this.year,
+        form[1],
+        form[3]
+      );
+    }, 0);
     let prevday = "";
     let moth = this.month;
     let year = this.year;
@@ -103,7 +115,6 @@ class DataPinker extends HTMLElement {
           date = i;
           moth = dt.getMonth();
           year = dt.getFullYear();
-          console.log("1");
           show_dmy.innerHTML = format(date, moth, year, form[1], form[3]);
           target.style.backgroundColor = "#68DE56";
           target.style.color = "#FFFFFF";
@@ -321,6 +332,7 @@ class DataPinker extends HTMLElement {
         tr.append(td);
         tbl_bd.append(tr);
       }
+      
       tbl.scrollTop = qwe - 80;
     };
     function builddays() {
@@ -331,7 +343,16 @@ class DataPinker extends HTMLElement {
       nxt.addEventListener("click", fordatenex);
     }
   }
-  
+
+  connectedCallback() {
+    this.build();
+  }
+  static get observedAttributes() { // (3)
+    return ['format'];
+  }
+  attributeChangedCallback(name, oldValue, newValue) { // (4)
+    this.format1 = this.getAttribute("format") || ""; 
+  }
 }
 
 customElements.define("date-pinker", DataPinker);
