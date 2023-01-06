@@ -6,6 +6,12 @@
   align-items: center;
   justify-content: center;
 }
+#hello {
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}
 .yearmonth {
   cursor: pointer;
   width: 160px;
