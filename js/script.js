@@ -1,7 +1,7 @@
 class DataPinker extends HTMLElement {
   constructor() {
     super();
-
+    this.format1 = this.getAttribute("format") || "";
     let qwe = new Date();
     this.year = qwe.getFullYear();
     this.month = qwe.getMonth();
@@ -9,14 +9,14 @@ class DataPinker extends HTMLElement {
   }
 
   connectedCallback() {
-    function format(d, m, y) {
+    function format(d, m, y, k = ".", p = ".") {
       let s = "";
       if (d < 10) s += "0" + d;
       else s += d;
-      s += ".";
+      s += k;
       if (m + 1 < 10) s += "0" + (m + 1);
       else s += m + 1;
-      s += ".";
+      s += p;
       s += y;
       return s;
     }
@@ -32,6 +32,7 @@ class DataPinker extends HTMLElement {
     };
     let dt = new Date();
     let date = this.day;
+    let form = this.format1;
     let prevday = "";
     let moth = this.month;
     let year = this.year;
@@ -49,7 +50,13 @@ class DataPinker extends HTMLElement {
 
     year_m.innerHTML = this.year;
 
-    show_dmy.innerHTML = format(this.day, this.month, this.year);
+    show_dmy.innerHTML = format(
+      this.day,
+      this.month,
+      this.year,
+      form[1],
+      form[3]
+    );
     date_form.style.display = "none";
 
     main_form.onclick = function () {
@@ -97,7 +104,7 @@ class DataPinker extends HTMLElement {
           moth = dt.getMonth();
           year = dt.getFullYear();
           console.log("1");
-          show_dmy.innerHTML = format(date, moth, year);
+          show_dmy.innerHTML = format(date, moth, year, form[1], form[3]);
           target.style.backgroundColor = "#68DE56";
           target.style.color = "#FFFFFF";
           wmd_m.innerHTML =
@@ -267,6 +274,7 @@ class DataPinker extends HTMLElement {
     year_m.onclick = () => {
       mth_coll.style.display = "none";
       tbl_bd.innerHTML = "";
+      let qwe = 0;
       tbl.style.overflowY = "scroll";
       tbl.style.height = "218px";
       for (let i = 1950; i <= 2100; i++) {
@@ -278,6 +286,7 @@ class DataPinker extends HTMLElement {
           span.style.fontWeight = "900";
           span.style.color = "#0024FF";
           prevyear = span;
+          qwe = tbl.scrollHeight;
         }
         span.onmouseover = function () {
           span.style.fontWeight = "bold";
@@ -312,6 +321,7 @@ class DataPinker extends HTMLElement {
         tr.append(td);
         tbl_bd.append(tr);
       }
+      tbl.scrollTop = qwe - 80;
     };
     function builddays() {
       createTable();
@@ -321,6 +331,7 @@ class DataPinker extends HTMLElement {
       nxt.addEventListener("click", fordatenex);
     }
   }
+  
 }
 
 customElements.define("date-pinker", DataPinker);
